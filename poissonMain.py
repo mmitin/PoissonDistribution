@@ -6,11 +6,11 @@ from pathlib import Path
 import json
 import math
 
-isMatchDayFinish =False
+isMatchDayFinish = False
 
 # loads the input data
 def loadMatchDayData(fileName):
-    path = Path(f'jsonFiles/{fileName}.json')
+    path = Path(f'{fileName}.json')
     contents = path.read_text()
     loadedFile = json.loads(contents)
     return loadedFile
@@ -67,16 +67,15 @@ def calculateProbability(teamsExpextedToScoreList):
             for k in range (0, 5):
                p = ((value**k*(math.e)**(-value)))/(math.factorial(k))
                probabilityList.append(f'{k}-{round(p*100, 2)}%')
-            #exactProbabilityDict[key]=probabilityList
             exactProbabilityStr += key +':' + str(probabilityList) + " \n"
             probabilityList = []
     
-    path = Path("jsonFiles/probabilityFile.txt")  
+    path = Path("probabilityFile.txt")  
     path.write_text(exactProbabilityStr)   
 
 
-def calculateProbability(teamsExpextedToScoreList):
-   
+def calculateProbability1(teamsExpextedToScoreList):
+    finalDict = []
     for match in teamsExpextedToScoreList:
         matchProbabilityList = []
         for key, value in match.items():
@@ -95,9 +94,12 @@ def calculateProbability(teamsExpextedToScoreList):
                             (dict2[3] * dict1[0]) + (dict2[3] * dict1[1]) + (dict2[3] * dict1[2]) +
                             (dict2[4] * dict1[0]) + (dict2[4] * dict1[1]) + (dict2[4] * dict1[2]) + (dict2[4] * dict1[3]))
 
-        sumDraw = ((dict1[0]+dict2[0])+(dict1[1]+dict2[1])+(dict1[2]+dict2[2])+(dict1[3]+dict2[3])+(dict1[4]+dict2[4]))
-        
-   
+        sumDraw = ((dict1[0]*dict2[0])+(dict1[1]*dict2[1])+(dict1[2]*dict2[2])+(dict1[3]*dict2[3])+(dict1[4]*dict2[4]))
+
+        finalDict.append([round(1 / sumHomeTeamWin,2), round(1 / sumDraw, 2), round(1 / sumAwayTeamWin,2)])
+    print('*****************************************************************')
+    print(finalDict)
+
 # update the data after the match day
 def updateAfterMatchDay(matchDayResults, laLigaTeamsDataDict):  
     for  match in matchDayResults:
@@ -120,7 +122,7 @@ def replaceTeamsNames(teamsList):
 
 # creates a main file after the match day
 def dataForNextMatchDay(dataDict, fileName):
-    path = Path(f'jsonFiles/{fileName}.json')
+    path = Path(f'{fileName}.json')
     contents = json.dumps(dataDict, indent=0)
     path.write_text(contents)
 
@@ -138,7 +140,7 @@ if not isMatchDayFinish:
 # Calculate each team Attacking & Deffensive Strenght and 
 # expected to score goals for their current game
     teamsExpextedToScoreList=calculateTeamsAttackingDefensiveStrength(matchDayList, leagueAvarages, laLigaTeamsDataWithAveragesDict )
-    calculateProbability(teamsExpextedToScoreList)
+    calculateProbability1(teamsExpextedToScoreList)
 
 
 # Update data after the match day
