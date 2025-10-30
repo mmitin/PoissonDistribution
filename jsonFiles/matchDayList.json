@@ -1,0 +1,42 @@
+[
+  {
+    "homeTeam": "Getafe CF",
+    "awayTeam": "Girona FC"
+  },
+  {
+    "homeTeam": "Villarreal CF",
+    "awayTeam": "Rayo Vallecano de Madrid"
+  },
+  {
+    "homeTeam": "Club Atlético de Madrid",
+    "awayTeam": "Sevilla FC"
+  },
+  {
+    "homeTeam": "Real Sociedad de Fútbol",
+    "awayTeam": "Athletic Club"
+  },
+  {
+    "homeTeam": "Real Madrid CF",
+    "awayTeam": "Valencia CF"
+  },
+  {
+    "homeTeam": "Levante UD",
+    "awayTeam": "RC Celta de Vigo"
+  },
+  {
+    "homeTeam": "Deportivo Alavés",
+    "awayTeam": "RCD Espanyol de Barcelona"
+  },
+  {
+    "homeTeam": "FC Barcelona",
+    "awayTeam": "Elche CF"
+  },
+  {
+    "homeTeam": "Real Betis Balompié",
+    "awayTeam": "RCD Mallorca"
+  },
+  {
+    "homeTeam": "Real Oviedo",
+    "awayTeam": "CA Osasuna"
+  }
+]

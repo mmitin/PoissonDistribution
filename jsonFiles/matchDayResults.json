@@ -1,0 +1,15 @@
+[
+  {
+    "homeTeam": "Getafe CF",
+    "homeGoalsScored": 1,
+    "awayTeam": "Girona FC",
+    "awayGoalsScored": 5
+  },
+  {
+    "homeTeam": "Villarreal CF",
+    "homeGoalsScored": 6,
+    "awayTeam": "Rayo Vallecano de Madrid",
+    "awayGoalsScored": 3
+  }
+
+]
